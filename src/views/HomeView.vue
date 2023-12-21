@@ -1,12 +1,31 @@
-<script setup>
+<script>
+import axios from 'axios'
+export default {
+  data() {
+    return {
+      detailPokemon: {},
+      listDetailPokemon: [],
+    }
+  },
+  methods:
+    {
+      fetchListPokemon() {
+        console.log('fetchListPokemon');
+        axios.get('https://pokeapi.co/api/v2/pokemon?limit=150')
+          .then(response => {
+            this.listDetailPokemon = response.data.results;
+          })
+          .catch(error => {
+            console.log(error);
+          })
+      },
+    },
+  created: function () {
+    this.fetchListPokemon();
+  }
+}
 </script>
 
 <template>
-  <div class="wrapper">
-    <h1>Home classe avec tailwind (uno.config)</h1>
-    <div class="flex flex-col">
-      <RouterLink to="/about">About</RouterLink>
-      <RouterLink to="/contact">Contact</RouterLink>
-    </div>
-  </div>
+  <div></div>
 </template>
