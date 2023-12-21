@@ -1,4 +1,4 @@
-#Pokedex vuejs
+# Pokedex vuejs
 ## Project setup
 ```
 npm install
