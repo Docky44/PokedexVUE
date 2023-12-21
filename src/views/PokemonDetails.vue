@@ -1,11 +1,17 @@
 <template>
     <div>
       <h1>Détails du Pokémon {{ pokemon.name }}</h1>
+        <div class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+        <img :src="pokemon.imageUrl" :alt="pokemon.name" />
   
-      <!-- Utilisation du composant PokemonCard avec les données du Pokémon -->
-      <PokemonCard :pokemon="pokemon" />  
+        <h2>{{ pokemon.name }}</h2>
+        <p>Attaque: {{ pokemon.stats.attack }}</p>
+        <p>Défense: {{ pokemon.stats.defense }}</p>
+        <p>Vitesse: {{ pokemon.stats.speed }}</p>
+      </div>
     </div>
   </template>
+  
   
   <script>
   import PokemonCard from "@/components/PokemonCard.vue";
@@ -14,8 +20,9 @@
     props: {
     },
     data() {
+        console.log("test");
       return {
-        pokemon: {} // Les données du Pokémon seront récupérées dynamiquement
+        pokemon: {} 
       };
     },
     created() {
@@ -25,6 +32,8 @@
       fetch(`https://api.pokemon.com/v2/pokemon/${pokemonId}`)
         .then(response => response.json())
         .then(data => {
+            console.log(data);
+
           this.pokemon = {
             name: data.name,
             imageUrl: data.sprites.front_default,
@@ -37,8 +46,5 @@
         })
         .catch(error => console.error('Erreur lors de la récupération des données du Pokémon', error));
     },
-    components: {
-      PokemonCard
-    }
   };
   </script>
