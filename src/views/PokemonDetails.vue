@@ -14,8 +14,7 @@
   
   
   <script>
-  import PokemonCard from "@/components/PokemonCard.vue";
-  
+    
   export default {
     props: {
     },
