@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import PokemonDetails from '../views/PokemonDetails.vue'
 import CreateTeam from "../components/CreateTeam.vue"
 
 
@@ -16,6 +17,13 @@ const router = createRouter({
             name: 'CreateTeam',
             component: CreateTeam
         },
+
+        {
+          path: '/pokemon/:id',
+          name: 'pokemon-details',
+          component: PokemonDetails,
+          props: true
+        }
     ]
 })
 
