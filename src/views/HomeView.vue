@@ -1,5 +1,5 @@
 <script>
-import axios from 'axios'
+import {fetchListPokemon} from "../function";
 export default {
   data() {
     return {
@@ -7,21 +7,14 @@ export default {
       listDetailPokemon: [],
     }
   },
-  methods:
-    {
-      fetchListPokemon() {
-        console.log('fetchListPokemon');
-        axios.get('https://pokeapi.co/api/v2/pokemon?limit=150')
-          .then(response => {
-            this.listDetailPokemon = response.data.results;
-          })
-          .catch(error => {
-            console.log(error);
-          })
-      },
-    },
+  methods: {
+    fetchPokemon() {
+      this.listDetailPokemon = fetchListPokemon();
+    }
+  },
+  
   created: function () {
-    this.fetchListPokemon();
+    this.fetchPokemon();
   }
 }
 </script>
