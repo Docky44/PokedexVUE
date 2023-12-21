@@ -1,12 +1,24 @@
-<script setup>
+<script>
+import {fetchListPokemon} from "../function";
+export default {
+  data() {
+    return {
+      detailPokemon: {},
+      listDetailPokemon: [],
+    }
+  },
+  methods: {
+    fetchPokemon() {
+      this.listDetailPokemon = fetchListPokemon();
+    }
+  },
+  
+  created: function () {
+    this.fetchPokemon();
+  }
+}
 </script>
 
 <template>
-  <div class="wrapper">
-    <h1>Home classe avec tailwind (uno.config)</h1>
-    <div class="flex flex-col">
-      <RouterLink to="/about">About</RouterLink>
-      <RouterLink to="/contact">Contact</RouterLink>
-    </div>
-  </div>
+  <div></div>
 </template>
