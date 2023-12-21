@@ -9,7 +9,7 @@
             @update-pokemon="updatePokemon(index,$event)"
             ></pokemon-selector>
         </div>
-        <button @click="submitTeam">
+        <button @click="submitTeam" class="text-white bg-gradient-to-br from-green-400 to-blue-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
             Submit team
         </button>
     </div>
@@ -57,19 +57,8 @@ export default{
   margin-top: 20px;
 }
 
-button {
-  margin-top: 20px;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 4px;
-  background-color: #007bff;
-  color: white;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-button:hover {
-  background-color: #0056b3;
+.text-white:hover{
+    cursor: pointer;
 }
 </style>
 
