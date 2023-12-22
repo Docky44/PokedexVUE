@@ -2,12 +2,14 @@ import axios from "axios";
 
 async function fetchListPokemon() {
     console.log('fetchListPokemon');
-    return axios.get('https://pokeapi.co/api/v2/pokemon?limit=151')
-  }
+    const response = await axios.get('https://pokeapi.co/api/v2/pokemon?limit=151');
+    return response.data.results;
+}
 
 
   async function fetchDetailPokemon(url) {
     console.log('fetchDetailPokemon');
+    console.log(url);
     const response = await axios.get(url);
     return response.data;
   }

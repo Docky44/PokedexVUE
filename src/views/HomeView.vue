@@ -5,7 +5,6 @@
 </template>
 
 <script>
-import axios from 'axios';
 import PokemonDetails from '../components/AllPokemon.vue';
 
 import {fetchListPokemon} from "../function";
@@ -19,8 +18,9 @@ export default {
     };
   },
   methods: {
-    fetchPokemon() {
-      this.listDetailPokemon = fetchListPokemon();
+    async fetchPokemon() {
+      console.log('fetchPokemon');
+      this.listDetailPokemon = await fetchListPokemon();
     }
   },
 
