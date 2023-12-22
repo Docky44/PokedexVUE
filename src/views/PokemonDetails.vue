@@ -26,7 +26,7 @@ export default {
     };
   },
   created() {
-    // Récupérez les données du Pokémon en utilisant le paramètre d'URL
+    // Je récupère les données du Pokémon en utilisant le paramètre d'URL
     this.fetchPokemon();
   },
   methods: {
