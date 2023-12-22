@@ -14,36 +14,43 @@
   
   
   <script>
-    
+    import {fetchDetailPokemon} from "../function";
   export default {
     props: {
     },
     data() {
         console.log("test");
       return {
-        pokemon: {} 
+        pokemon: {
+          name: '',
+          imageUrl: '',
+          stats: {
+            attack: 0,
+            defense: 0,
+            speed: 0
+          }
+        }
       };
     },
     created() {
       // Récupérez les données du Pokémon en utilisant le paramètre d'URL
-      const pokemonId = this.$route.params.id;
-  
-      fetch(`https://api.pokemon.com/v2/pokemon/${pokemonId}`)
-        .then(response => response.json())
-        .then(data => {
-            console.log(data);
-
-          this.pokemon = {
-            name: data.name,
-            imageUrl: data.sprites.front_default,
-            stats: {
-              attack: data.stats[1].base_stat,
-              defense: data.stats[2].base_stat,
-              speed: data.stats[5].base_stat
-            }
-          };
-        })
-        .catch(error => console.error('Erreur lors de la récupération des données du Pokémon', error));
+      this.fetchPokemon();
     },
+    methods: {
+      async fetchPokemon() {
+        console.log('fetchPokemon');
+        const pokemonDetail = await fetchDetailPokemon("https://pokeapi.co/api/v2/pokemon/" + this.$route.params.id + "/");
+        console.log(pokemonDetail);
+        this.pokemon = {
+          name: pokemonDetail.name,
+          imageUrl: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${this.$route.params.id}.png`,
+          stats: {
+            attack: pokemonDetail.stats[1].base_stat,
+            defense: pokemonDetail.stats[2].base_stat,
+            speed: pokemonDetail.stats[5].base_stat
+          }
+        };
+      }
+    }
   };
   </script>
